@@ -12,4 +12,8 @@ class Persona {
 	method noEsDuenio(){
 		duenio = false
 	}
+	
+	method duenio() {
+		return duenio
+	}
 }

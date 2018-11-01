@@ -1,10 +1,10 @@
-import personas.*
+import persona.*
 
 class Habitacion {
 	var property confort = 0
-	const duenios = #{}
+	const duenios = #{"juan"}
 	
-	method nivelConfort(prersona) {
+	method nivelConfort(persona) {
 		return confort += 10
 	}
 	method esDuenio(persona) {
@@ -31,7 +31,8 @@ class Banio inherits Habitacion {
 class Dormitorio inherits Habitacion {
 	override method nivelConfort(persona){
 		return super(persona)+
-		if (persona.duenio())
+		if (persona.duenio()){return 10 / duenios.size()}
+			else {}
 	}
 }
 
