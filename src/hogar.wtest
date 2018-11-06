@@ -1,0 +1,55 @@
+import persona.*
+import habitaciones.*
+
+describe "group of tests" {
+	const juan  = new Persona()
+	const pedro = new Persona()
+	const maria = new Persona
+	const usoGeneral = new UsoGeneral()
+	const banio = new Banio()
+	const dormitorio = new Dormitorio()
+	const cocina = new Cocina()
+	
+	
+fixture {
+	juan.edad(35)
+	juan.esHabil()
+	maria.edad(30)
+	pedro.edad(4)
+	pedro.noEsDuenio()
+	cocina.metrosCuadrados(20)
+	dormitorio.agregarDuenio(pedro)
+	dormitorio.agregarDuenio(maria)
+	
+}
+	test "confort uso general a Juan y Pedro" {
+
+		assert.equals(10, usoGeneral.nivelConfort(juan))
+		assert.equals(10, usoGeneral.nivelConfort(pedro))
+	}
+	
+	test "confort banio a Juan y pedro" {
+
+		assert.equals(14, banio.nivelConfort(juan))
+		assert.equals(12, banio.nivelConfort(pedro))
+	}
+	
+	test "confort dormitorio a Juan" {
+
+		assert.equals(10, dormitorio.nivelConfort(pedro))		
+		assert.equals(15, dormitorio.nivelConfort(juan))
+		assert.equals(15, dormitorio.nivelConfort(maria))
+		
+	}
+	
+	test "confort cocina a Juan" {
+
+		assert.equals(10, cocina.nivelConfort(pedro))		
+		assert.equals(12, cocina.nivelConfort(juan))
+	}
+	
+	test "porcentaje confort cocina" {
+		valorPorDefecto.valor(0.2)
+		assert.equals(14, cocina.nivelConfort(juan))
+	}
+}

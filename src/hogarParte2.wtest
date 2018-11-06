@@ -1,0 +1,44 @@
+import persona.*
+import habitaciones.*
+
+describe "group of tests" {
+	const juan  = new Persona()
+	const pedro = new Persona()
+	const maria = new Persona
+	const usoGeneral = new UsoGeneral()
+	const banio = new Banio()
+	const dormitorio = new Dormitorio()
+	const cocina = new Cocina()
+	
+	
+fixture {
+	juan.edad(35)
+	juan.esHabil()
+	maria.edad(30)
+	pedro.edad(4)
+	pedro.noEsDuenio()
+	cocina.metrosCuadrados(20)
+	dormitorio.agregarDuenio(pedro)
+	dormitorio.agregarDuenio(maria)
+//	usoGeneral.ocuparHabitacion(juan)
+//	usoGeneral.ocuparHabitacion(maria)
+//	usoGeneral.ocuparHabitacion(pedro)
+	
+}
+	test "ocupante de uso general" {
+		usoGeneral.ocuparHabitacion(juan)
+		usoGeneral.ocuparHabitacion(maria)
+		usoGeneral.ocuparHabitacion(pedro)
+		
+		assert.equals(#{juan, maria, pedro}, usoGeneral.ocupantes())
+	}
+	
+	test "ocupante de banio" {
+		banio.ocuparHabitacion(pedro)
+		banio.ocuparHabitacion(juan)
+		banio.ocuparHabitacion(maria)
+		
+		//assert.throwsExceptionWhitMessage(" No puede ingresar ",({banio.ocuparHabitacion(maria)}))
+		assert.equals(#{juan, pedro, maria}, banio.ocupantes())
+	}
+}
